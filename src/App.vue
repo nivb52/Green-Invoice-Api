@@ -21,6 +21,8 @@ export default {
 
 <style lang="scss">
 // @import "assets/css/main.scss";
+@import "@/assets/css/var.scss";
+
 .fade-in-bottom {
   animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }

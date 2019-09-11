@@ -92,10 +92,8 @@ export default {
 </script>
 
 <style lang="scss" scope>
-$base-color: #1143ff; //#0078e7
-$white-color: #fff;
-$login-width: 75%;
-$small-font: 0.8rem;
+@import "@/assets/css/var.scss";
+
 body {
   overflow: hidden;
 }
