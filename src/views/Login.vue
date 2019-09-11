@@ -76,10 +76,11 @@ export default {
           user: userInput
         });
         // IF Cradentitals are correct :
-        this.$router.push("/user-info");
+        this.$router.push("/");
       } catch (err) {
         console.log("Could Not Signup err:", err);
-        Swal.fire({ type: "error", text: "err" });
+        // .. TODO: get correct error from server
+        Swal.fire({ type: "error", text: "שם משתמש או סיסמה לא נכונים" });
         this.user.email = "";
         this.user.password = "";
         this.isAjaxing = false;
