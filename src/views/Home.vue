@@ -1,10 +1,15 @@
 <template>
   <section class="home">
-    <h1>  {{getUserFirstName}} שלום </h1>
-    <h2>  דף העסק :   {{getBusinessesName}}  </h2>
+    <h1>{{getUserFirstName}} שלום</h1>
+    <h2>דף העסק : {{getBusinessesName}}</h2>
     <!-- <Welcome firstName="Rami" bussinesName="Rami-Levi" /> -->
-
-    <button class="btn btn-logout" @click="doLogout"> logout </button>
+    <div class="card">
+      <router-link to="/user-info">פרטים נוספים</router-link>
+    </div>
+    <br />
+    <div class="card">
+      <button class="btn btn-logout" @click="doLogout">logout</button>
+    </div>
   </section>
 </template>
 
@@ -23,10 +28,10 @@ export default {
     };
   },
   async created() {
-    const user = await this.$store.getters.getUser
+    const user = await this.$store.getters.getUser;
     // IF NO USER REUTRN HIM TO LOGIN PAGE
-    if (!user) return this.$router.push('/login')
-    
+    if (!user) return this.$router.push("/login");
+
     // ELSE - CONTINUE LOADING :
     this.user = JSON.parse(JSON.stringify(user));
   },
@@ -34,13 +39,14 @@ export default {
     getUserFirstName() {
       if (this.user && this.user.firstName) return this.user.firstName || null;
     },
-   
+
     getBusinessesName() {
-      if (this.user && this.user.businesses)  return this.user.businesses[0].name || null;
-    },
+      if (this.user && this.user.businesses)
+        return this.user.businesses[0].name || null;
+    }
   },
   methods: {
-     async doLogout() {
+    async doLogout() {
       try {
         this.$store.dispatch({ type: "logout", loggedUser: this.user });
         this.$router.push("/login");
@@ -48,13 +54,20 @@ export default {
         console.log("Could not log out err:", err);
       }
     }
-  },
+  }
 };
 </script>
 
 <style lang="scss" scope>
 @import "@/assets/css/var.scss";
+.home {
+  padding: 5%;
+}
 
+.card {
+  margin: 2rem;
+  padding: 2rem;
+}
 .btn {
   font-size: $small-font;
   line-height: 1.6rem;
