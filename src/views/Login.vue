@@ -1,6 +1,6 @@
 
 <template>
-  <div class="login-page">
+  <div class="login-page" :class="{'loading': isAjaxing}">
     <Logo class="logo" logoSize />
 
     <div class="right-side center-self">
@@ -48,6 +48,7 @@ export default {
   },
   data() {
     return {
+      isAjaxing : false,
       isShowingPass: false,
       debugPass: "12345678",
       user: {
@@ -64,24 +65,24 @@ export default {
     async doLogin() {
       // get new Obj for user
       const userInput = JSON.parse(JSON.stringify(this.user));
+      // loading styling:  
+      this.isAjaxing = true;
+      // document.getElementsByClassName('btn').style.cursor="wait"
 
       try {
         let validUser = await this.$store.dispatch({
           type: "login",
           user: userInput
         });
-
         // IF Cradentitals are correct :
-        const currUser = await this.$store.getters.getUser;
-        if (currUser) {
-          console.log("we have a user: ", currUser);
-          this.$router.push("/user-info");
-        }
+        this.$router.push("/user-info");
       } catch (err) {
         console.log("error type:", err.errorMessage);
         this.user.email = "";
         this.user.password = "";
+        this.isAjaxing = false;
       }
+       
     }
   }
 };
@@ -98,7 +99,13 @@ body {
 .logo {
   margin-top: 1rem;
 }
-
+.loading{
+  cursor: wait;
+  opacity: 0.8;
+   .btn  {
+    cursor: wait;
+  }
+}
 .login-page {
   display: grid;
   grid-template-columns: minmax(20px, 5vw) auto 55%;
@@ -185,6 +192,7 @@ input {
   background-size: 1.8vw;
   background-position: 15% 45%;
 }
+
 
 @media (max-width: 1020px) and (min-width: 925px) {
   .btn-google-login {
