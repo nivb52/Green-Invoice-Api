@@ -23,13 +23,12 @@ export default new Vuex.Store({
 
 			try {
         currUser = await userService.login(user);
-        if (user){
+        if (currUser){
           commit({ type: "setUser", currUser });
           return currUser;
         } 
         
 			} catch (err) {
-				console.log("Could Not Signup, error: ", err);
 				throw err;
 			}
 		}
