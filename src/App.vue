@@ -23,29 +23,11 @@ export default {
 // @import "assets/css/main.scss";
 @import "@/assets/css/var.scss";
 
-.fade-in-bottom {
-  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
 /**
  * ----------------------------------------
- * animation css fade-in-bottom
+ * RESETS : GLOBAL CSS / SCSS : RESETS
  * ----------------------------------------
  */
-
-@keyframes fade-in-bottom {
-  0% {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-
-$base-color: #1143ff; //#0078e7
-
 *,
 ::after,
 ::before,
@@ -108,4 +90,26 @@ input {
     font-size: 2rem;
   }
 }
+
+.fade-in-bottom {
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+/**
+ * ----------------------------------------
+ * animation css fade-in-bottom
+ * ----------------------------------------
+ */
+
+@keyframes fade-in-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
 </style>
