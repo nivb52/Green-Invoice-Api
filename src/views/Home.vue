@@ -4,7 +4,7 @@
     <h2>  דף העסק :   {{getBusinessesName}}  </h2>
     <!-- <Welcome firstName="Rami" bussinesName="Rami-Levi" /> -->
 
-    
+    <button @click="doLogout"> logout </button>
   </section>
 </template>
 
@@ -38,6 +38,16 @@ export default {
     getBusinessesName() {
       if (this.user && this.user.businesses)  return this.user.businesses[0].name || null;
     },
-  }
+  },
+  methods: {
+     async doLogout() {
+      try {
+        this.$store.dispatch({ type: "logout", loggedUser: this.user });
+        this.$router.push("/login");
+      } catch (err) {
+        console.log("Could not log out err:", err);
+      }
+    }
+  },
 };
 </script>
