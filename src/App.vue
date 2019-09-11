@@ -55,12 +55,13 @@ body {
 body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   // font-family: "Alef", sans-serif;
+  // letter-spacing: -0.3px
+  ;
   -webkit-font-smoothing: antialiased;
   text-align: center;
   color: #2c3e50;
   direction: rtl;
   height: 100%;
-  // letter-spacing: -0.3px;
 }
 
 h1,
