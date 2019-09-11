@@ -7,8 +7,8 @@ import axois from "axios";
 export default {
 	login,
 	getUser,
-    getLoggedInUser,
-    logout
+	getLoggedInUser,
+	logout
 };
 
 // const loggedInUser = { name: "niv-test", password: "1111" };
@@ -33,22 +33,16 @@ async function login(user = null) {
 
 	const { email, password } = user;
 	const endpoit = "account/login";
-
-	axois
-		.post(`${BASE_URL}${endpoit}`, {
-			email,
-			password
-		})
-		.then(
-			response => {
-				console.log("login ", response.data);
-				return _handleSuccessfullLogin(response.data);
-			
-			},
-			error => {
-				console.log("error: ", error.errorMessage);
-			}
-		);
+	let response = await axois.post(`${BASE_URL}${endpoit}`, {
+		email,
+		password
+	});
+	try {
+		return _handleSuccessfullLogin(response.data);
+	} catch (err) {
+		throw err;
+	}
+	// const {data} = response
 }
 
 // getUser
@@ -64,7 +58,7 @@ async function getUser(user = loggedInUser) {
 			return response.data;
 		},
 		error => {
-			console.log("error: ", error);
+			console.log("error: ", error.errorMessage);
 		}
 	);
 }
@@ -78,7 +72,6 @@ function logout() {
 	}
 	return {};
 }
-
 
 // :::::::::::::::::::::::::::: //
 // :::::::::::::::::::::::::::: //
