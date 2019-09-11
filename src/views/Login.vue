@@ -40,6 +40,7 @@
 
 <script>
 import Logo from "@/cmps/Logo.vue";
+import Swal from "sweetalert2";
 
 export default {
   name: "login",
@@ -77,7 +78,8 @@ export default {
         // IF Cradentitals are correct :
         this.$router.push("/user-info");
       } catch (err) {
-        console.log("error type:", err.errorMessage);
+        console.log("Could Not Signup err:", err);
+        Swal.fire({ type: "error", text: "err" });
         this.user.email = "";
         this.user.password = "";
         this.isAjaxing = false;
