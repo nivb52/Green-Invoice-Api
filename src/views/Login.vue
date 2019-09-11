@@ -101,6 +101,7 @@ body {
   top: 10vh; // correction because of image bcg color
   right: 0;
   width:14vw;
+  min-width: 80px;
 
 }
 .loading {
@@ -112,7 +113,7 @@ body {
 }
 .login-page {
   display: grid;
-  grid-template-columns: minmax(20px, 5vw) auto 55%;
+  grid-template-columns: minmax(20px, 5vw) auto 45%;
   height: 108vh; // correction for bcg color
   width: 100vw;
   position: relative;
@@ -121,6 +122,8 @@ body {
   & .right-side {
     grid-column: 2/3;
     padding-top: 20vh;
+    padding-right: 10vw;
+
   }
   & .left-side {
     grid-column: 3;
