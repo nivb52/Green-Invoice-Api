@@ -1,9 +1,9 @@
 <template>
   <section class="home">
     <h1>  {{getUserFirstName}} שלום </h1>
+    <h2>  דף העסק :   {{getBusinessesName}}  </h2>
     <!-- <Welcome firstName="Rami" bussinesName="Rami-Levi" /> -->
 
-    <h2>  דף העסק :   {{getBusinessesName}}  </h2>
     
   </section>
 </template>
