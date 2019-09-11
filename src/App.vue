@@ -4,16 +4,16 @@
     <transition name="router-anim" enter-active-class="animated fade-in-bottom">
       <router-view />
     </transition>
-    <AppHeader /> 
+    <AppNav /> 
   </div>
 </template>
 
 <script>
-import AppHeader from "@/cmps/AppHeader.vue";
+import AppNav from "@/cmps/AppNav.vue";
 export default {
   name: "app",
   components: {
-    AppHeader
+    AppNav
   }
 };
 </script>
