@@ -1,9 +1,9 @@
 
 <template>
   <div class="login-page" :class="{'loading': isAjaxing}">
-    <Logo class="logo" logoSize />
 
     <div class="right-side center-self">
+    <Logo class="logo" />
       <h1>התחברות לחשבונית ירוקה</h1>
 
       <form @submit.prevent>
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      isAjaxing : false,
+      isAjaxing: false,
       isShowingPass: false,
       debugPass: "12345678",
       user: {
@@ -66,7 +66,7 @@ export default {
     async doLogin() {
       // get new Obj for user
       const userInput = JSON.parse(JSON.stringify(this.user));
-      // loading styling:  
+      // loading styling:
       this.isAjaxing = true;
       // document.getElementsByClassName('btn').style.cursor="wait"
 
@@ -78,14 +78,13 @@ export default {
         // IF Cradentitals are correct :
         this.$router.push("/");
       } catch (err) {
-        console.log("Could Not Signup err:", err);
+        // console.log("Could Not Signup err:", err);
         // .. TODO: get correct error from server
         Swal.fire({ type: "error", text: "שם משתמש או סיסמה לא נכונים" });
         this.user.email = "";
         this.user.password = "";
         this.isAjaxing = false;
       }
-       
     }
   }
 };
@@ -98,25 +97,30 @@ body {
   overflow: hidden;
 }
 .logo {
-  margin-top: 1rem;
+  position: absolute;
+  top: 10vh; // correction because of image bcg color
+  right: 0;
+  width:14vw;
+
 }
-.loading{
+.loading {
   cursor: wait;
   opacity: 0.8;
-   .btn  {
+  .btn {
     cursor: wait;
   }
 }
 .login-page {
   display: grid;
   grid-template-columns: minmax(20px, 5vw) auto 55%;
-  height: 108vh;
+  height: 108vh; // correction for bcg color
   width: 100vw;
   position: relative;
   top: -10px;
 
   & .right-side {
     grid-column: 2/3;
+    padding-top: 20vh;
   }
   & .left-side {
     grid-column: 3;
@@ -124,7 +128,8 @@ body {
     align-content: center;
 
     &--hero {
-      margin-top: 10%;
+      // background-position: 3vw 48%;
+      margin-top: 25vh;
       margin-right: -5.5vw;
       //   height: 87%;
     }
@@ -194,7 +199,6 @@ input {
   background-position: 15% 45%;
 }
 
-
 @media (max-width: 1020px) and (min-width: 925px) {
   .btn-google-login {
     background-size: 1.6vw;
@@ -202,7 +206,7 @@ input {
   }
 }
 
-@media (max-width: 924px) {
+@media (max-width: $laptop-screen) {
   .btn-container {
     display: inline-flex;
     flex-direction: column;
@@ -224,11 +228,20 @@ input {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: $phone-screen) {
   .btn-google-login {
     text-align: center;
     background-size: 2.4vw;
     background-position: 3vw 48%;
+  }
+}
+
+@media (max-width: $small-screen) {
+  body {
+    font-size: 12px;
+  }
+  .login-page {
+    grid-template-columns: 0 auto 45%;
   }
 }
 </style>
