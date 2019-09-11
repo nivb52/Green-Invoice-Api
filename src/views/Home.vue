@@ -4,7 +4,7 @@
     <h2>  דף העסק :   {{getBusinessesName}}  </h2>
     <!-- <Welcome firstName="Rami" bussinesName="Rami-Levi" /> -->
 
-    <button @click="doLogout"> logout </button>
+    <button class="btn btn-logout" @click="doLogout"> logout </button>
   </section>
 </template>
 
@@ -51,3 +51,18 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scope>
+@import "@/assets/css/var.scss";
+
+.btn {
+  font-size: $small-font;
+  line-height: 1.6rem;
+  border-radius: 22px;
+}
+.btn-logout {
+  background-color: rgba($base-color, 0.8);
+  color: $white-color;
+  width: 54%;
+}
+</style>
