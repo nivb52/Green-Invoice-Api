@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
-import UserInfo from './views/UserInfo.vue'
+// import UserInfo from './views/UserInfo.vue'
 
 Vue.use(Router)
 
