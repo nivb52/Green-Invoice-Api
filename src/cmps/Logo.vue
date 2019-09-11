@@ -1,11 +1,12 @@
 <template>
-    <img width="100px" alt="green invoice logo" src="@/assets/green_logo.svg">
+    <img  alt="green invoice logo" src="@/assets/green_logo.svg">
 </template>
 
 <script>
 export default {
-    //TODO : 
-    // GET PROPS OF THE SIZE OF THE LOGO
+    // option for props of width, but use css in my opinion is better
+    // props:['size'] 
+    // -> put this in the img line: :width="getsize" 
 }
 </script>
 
